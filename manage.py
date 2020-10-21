@@ -3,9 +3,11 @@
 import os
 import sys
 
+PROJECT_ROOT = os.path.dirname(__file__)
+sys.path.insert(0, os.path.join(PROJECT_ROOT, 'server'))
 
 def main():
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'reango.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'reango.settings.dev')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

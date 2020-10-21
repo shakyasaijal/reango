@@ -1,17 +1,7 @@
 import os
-import yaml
+from os.path import dirname
 
-DEBUG = True
-
-if DEBUG:
-    CONFIG_FILE = 'config/config.dev.yaml'
-else:
-    CONFIG_FILE = 'config/config.prod.yaml'
-
-credentials = yaml.load(open(CONFIG_FILE), Loader=yaml.FullLoader)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SECRET_KEY = credentials['SECRET_KEY']
-ALLOWED_HOSTS = ['*']
+BASE_DIR = dirname(dirname(dirname(dirname(__file__))))
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -60,13 +50,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'reango.wsgi.application'
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
