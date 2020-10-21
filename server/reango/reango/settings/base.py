@@ -13,7 +13,8 @@ INSTALLED_APPS = [
 
 THIRD_PARTY_APPS = [
     'graphene_django',
-    'django_filters'
+    'django_filters',
+    'graphql_playground'
 ]
 
 OWN_APPS = []
@@ -81,3 +82,11 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
+
+# GraphQL
+GRAPHENE = {
+    'SCHEMA': 'reango.schema.schema',
+    'MIDDLEWARE': [
+        'graphql_jwt.middleware.JSONWebTokenMiddleware',
+    ],
+}
