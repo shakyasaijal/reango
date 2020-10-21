@@ -1,7 +1,6 @@
 import os
-from os.path import dirname
 
-BASE_DIR = dirname(dirname(dirname(dirname(__file__))))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -51,6 +50,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'reango.wsgi.application'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -68,7 +74,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 
 LANGUAGE_CODE = 'en-us'
-TIME_ZONE = 'Asia/Kathmandu'
+TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
